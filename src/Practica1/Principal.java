@@ -19,7 +19,8 @@ public class Principal {
             System.out.println(">> 1.Registro de clientes.     <<");
 			System.out.println(">> 2.Salida de clientes.       <<");
 			System.out.println(">> 3.Visualización de parqueo. <<");
-			System.out.println(">> 4.Búsqueda de cliente.      <<");
+			System.out.println(">> 4.Generar Grafo.            <<");
+			System.out.println(">> 5.Búsqueda de cliente.      <<");
 			System.out.println("");
 			System.out.println("<<--------------------------------->>");
 			opcion=entrada.nextInt();
@@ -83,6 +84,14 @@ public class Principal {
 				  break;
 			  
 			  case 4:
+				  //
+				  System.out.println("Se esta generando el archivo para el grafo");
+				  ListaProyecto.generarGrafo(); 
+				  
+				  
+				  break;
+				  
+			  case 5:
 				  System.out.println("Ingrese el nombre del cliente que desea buscar");
 				    Nombrenew=entrada.next();
 				   System.out.println("Ingrese la placa del vehículo");

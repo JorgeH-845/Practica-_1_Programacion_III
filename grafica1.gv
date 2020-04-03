@@ -1,0 +1,26 @@
+digraph G {
+ rankdir=LR; 
+ node [shape=box,style=filled,fillcolor="gray"]; 
+ " Nombre: andre
+ NIT: 12342
+ Fecha de nacimiento: 1965
+ Telefono: 999
+ Hora de entrada: 14
+ Numero de Placa:3333
+ Tipo de Vehiculo: carro
+ Color del Vehiculo: verde" -> " Nombre: jorge
+ NIT: 1234
+ Fecha de nacimiento: 1997
+ Telefono: 12342
+ Hora de entrada: 12
+ Numero de Placa:12221
+ Tipo de Vehiculo: carro
+ Color del Vehiculo: azul" -> " Nombre: hector
+ NIT: 333442
+ Fecha de nacimiento: 1999
+ Telefono: 4444
+ Hora de entrada: 17
+ Numero de Placa:1919191
+ Tipo de Vehiculo: moto
+ Color del Vehiculo: rojo" -> "null";
+}

@@ -1,5 +1,7 @@
 package Practica1;
 
+import java.io.BufferedWriter;
+import java.io.FileWriter;
 import java.util.Scanner;
 
 
@@ -64,7 +66,80 @@ public class Lista {
             
 		} 
  
-	}   
+	} 
+	
+	//
+	public void generarGrafo() {
+		
+		try {
+			
+			Nodo nodotmp = inicio;
+			
+			BufferedWriter escritura = new BufferedWriter(new FileWriter("C:\\Ambiente UMG\\WorkSpace\\Practica\\grafica1.gv"));
+			
+			escritura.write("digraph G {\n");
+			escritura.write(" rankdir=LR; \n");
+			escritura.write(" node [shape=box,style=filled,fillcolor=\"gray\"]; \n");
+			
+			String lineaGraph= " ";
+			lineaGraph = lineaGraph + "\"" + " Nombre: " + nodotmp.informacionNodo.Nombre  + "\n" + " NIT: "  + nodotmp.informacionNodo.Nit + "\n" + " Fecha de nacimiento: "  + nodotmp.informacionNodo.FechaNacimiento + "\n" + " Telefono: " + nodotmp.informacionNodo.Telefono + "\n" + " Hora de entrada: " + nodotmp.informacionNodo.HoraEntrada + "\n" + " Numero de Placa:" + nodotmp.informacionNodo.NoPlaca + "\n" +  " Tipo de Vehiculo: " + nodotmp.informacionNodo.TipoVehiculo + "\n" + " Color del Vehiculo: " + nodotmp.informacionNodo.ColorVehiculo + "\" -> ";
+
+			//para impresion vertical colocar al final del codigo  + "\""
+			// para la impresion horizontal colocar esto al final de codigo de los caracteres del cliente + "\" -> "
+			
+			
+			while (nodotmp.siguiente != null) { 
+				nodotmp = nodotmp.siguiente;
+				lineaGraph = lineaGraph + "\"" + " Nombre: " + nodotmp.informacionNodo.Nombre  + "\n" + " NIT: "  + nodotmp.informacionNodo.Nit + "\n" + " Fecha de nacimiento: "  + nodotmp.informacionNodo.FechaNacimiento + "\n" + " Telefono: " + nodotmp.informacionNodo.Telefono + "\n" + " Hora de entrada: " + nodotmp.informacionNodo.HoraEntrada + "\n" + " Numero de Placa:" + nodotmp.informacionNodo.NoPlaca + "\n" + " Tipo de Vehiculo: " + nodotmp.informacionNodo.TipoVehiculo + "\n" + " Color del Vehiculo: " + nodotmp.informacionNodo.ColorVehiculo + "\" -> ";
+			}   
+	 
+			
+			lineaGraph = lineaGraph + "\"null\";\n";
+			escritura.write(lineaGraph); 
+			escritura.write("}\n");
+			escritura.close();
+			System.out.println("El archivo gv ha sido escrito en C:\\Ambiente UMG\\WorkSpace\\Practica\\grafica1.gv");
+		}catch(Exception e){
+			e.printStackTrace(); 
+		}
+		
+		
+	}
+	
+	
+	//Ejecucion del codigo desde cmd JAVA
+	
+	public void ejecutarCmd() {
+		
+		try {
+		
+		String dotPath = "C:\\Program Files (x86)\\Graphviz2.38\\bin\\dot.exe";
+		
+		String fileInputPath = "C:\\Ambiente UMG\\WorkSpace\\Practica\\grafica1.gv";
+		String fileOutputPath = "C:\\Ambiente UMG\\WorkSpace\\Practica\\grafica1.jpg";
+		
+		String tParam = "-Tjpg";
+		String tOParam = "-o";
+		
+		String[] cmd = new String [5];
+		cmd[0] = dotPath;
+		cmd[1] = tParam;
+		cmd[2] = fileInputPath;
+		cmd[3] = tOParam;
+		cmd[4] = fileOutputPath;
+		
+		Runtime rt = Runtime.getRuntime ();
+		
+		rt.exec(cmd); 
+		
+		}catch (Exception ex) {
+			ex.printStackTrace(); 
+		}finally {
+			
+		}
+
+	}
+	
 	
 	public void buscarCliente(String Nombrenew, String NoPlacanew) {
 		Nodo nodotmp = inicio; 
